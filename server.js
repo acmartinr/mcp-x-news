@@ -178,8 +178,27 @@ app.get("/health", (req, res) => {
   res.json({ ok: true, has_x_token: Boolean(X_BEARER_TOKEN) });
 });
 
+function createMcpServer() {
+  const server = new McpServer({
+    name: "x-news-mcp",
+    version: "1.0.0"
+  });
+
+  // registra aquí tus tools/resources/prompts
+  // server.tool(...)
+
+  return server;
+}
+
 app.get("/sse", async (req, res) => {
   const transport = new SSEServerTransport("/messages", res);
+
+  const server = createMcpServer();
+
+  res.on("close", async () => {
+    await server.close();
+  });
+
   await server.connect(transport);
 });
 
