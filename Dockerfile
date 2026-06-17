@@ -11,6 +11,8 @@ WORKDIR /app
 
 # Set production environment
 ENV NODE_ENV="production"
+ENV HOST="0.0.0.0"
+ENV PORT="8080"
 
 
 # Throw-away build stage to reduce size of final image
@@ -35,5 +37,5 @@ FROM base
 COPY --from=build /app /app
 
 # Start the server by default, this can be overwritten at runtime
-EXPOSE 3000
+EXPOSE 8080
 CMD [ "npm", "run", "start" ]

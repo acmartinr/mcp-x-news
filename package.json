@@ -1,17 +1,18 @@
 {
   "name": "x-news-mcp",
   "version": "1.0.0",
-  "description": "Simple MCP server to extract recent news from X/Twitter",
+  "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "start": "node server.js"
+    "start": "node src/index.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "latest",
     "express": "latest",
     "zod": "latest"
-  },
-  "engines": {
-    "node": ">=18"
   }
 }
+
