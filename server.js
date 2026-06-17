@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 const X_BEARER_TOKEN = process.env.X_BEARER_TOKEN;
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 
 function requireToken() {
   if (!X_BEARER_TOKEN) {
